@@ -1,5 +1,6 @@
 from django.db import models
 from projects.models import Project
+from decimal import Decimal
 
 class LifecycleCost(models.Model):
 
@@ -37,3 +38,15 @@ class LifecycleCost(models.Model):
 
     def __str__(self):
         return f"LCCA - {self.project.title}"
+
+
+    def save(self, *args, **kwargs):
+        self.total_lifecycle_cost = (
+            self.initial_cost +
+            self.maintenance_cost +
+            self.operation_cost +
+            self.replacement_cost +
+            self.disposal_cost
+        )
+
+        super().save(*args, **kwargs)
