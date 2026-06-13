@@ -1,5 +1,6 @@
 from django.db import models
 from projects.models import Project
+from decimal import Decimal
 
 
 class PortfolioAnalysis(models.Model):
@@ -51,9 +52,7 @@ class PortfolioAnalysis(models.Model):
             ) * 100
 
         self.priority_score = (
-            float(self.roi) * 0.7
-        ) + (
-            float(self.risk_score) * 0.3
-        )
-
-        super().save(*args, **kwargs)
+    self.roi * Decimal("0.7")
+) + (
+    self.risk_score * Decimal("0.3")
+)
