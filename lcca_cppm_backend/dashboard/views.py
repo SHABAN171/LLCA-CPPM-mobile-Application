@@ -36,6 +36,19 @@ class DashboardView(APIView):
         top_project = PortfolioAnalysis.objects.order_by(
             '-priority_score'
         ).first()
+        recent_projects = Project.objects.order_by(
+            '-created_at'
+        )[:5]
+
+        recent_data = [
+            {
+                "id": p.id,
+                "title": p.title,
+                "status": p.status,
+                "budget": p.budget
+            }
+            for p in recent_projects
+        ]
 
         return Response({
             "total_projects": total_projects,
@@ -47,4 +60,5 @@ class DashboardView(APIView):
                 top_project.project.title
                 if top_project else None
             )
+            ,"recent_projects": recent_data
         })
