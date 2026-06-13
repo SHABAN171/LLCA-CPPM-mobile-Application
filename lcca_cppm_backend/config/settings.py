@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cppm',
     'reports',
     'notifications',
+    'dashboard',
     
 ]
 
