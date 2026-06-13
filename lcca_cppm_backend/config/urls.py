@@ -20,5 +20,6 @@ urlpatterns = [
     path('api/', include('cppm.urls')),
     path('api/', include('reports.urls')),
     path('api/', include('dashboard.urls')),
+    path('api/', include('notifications.urls'))
     
 ]
