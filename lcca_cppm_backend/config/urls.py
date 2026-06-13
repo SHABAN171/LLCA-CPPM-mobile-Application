@@ -18,4 +18,5 @@ urlpatterns = [
     path('api/', include('projects.urls')),
     path('api/', include('lcca.urls')),
     path('api/', include('cppm.urls')),
+    path('api/', include('reports.urls')),
 ]
