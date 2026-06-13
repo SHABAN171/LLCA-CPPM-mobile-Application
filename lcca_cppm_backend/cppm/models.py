@@ -42,3 +42,18 @@ class PortfolioAnalysis(models.Model):
 
     def __str__(self):
         return self.project.title
+    
+    def save(self, *args, **kwargs):
+        if self.investment_cost > 0:
+            self.roi = (
+                (self.expected_return - self.investment_cost)
+                / self.investment_cost
+            ) * 100
+
+        self.priority_score = (
+            float(self.roi) * 0.7
+        ) + (
+            float(self.risk_score) * 0.3
+        )
+
+        super().save(*args, **kwargs)
