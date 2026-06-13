@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
+from rest_framework_simplejwt.views import (  # type: ignore[import]
     TokenObtainPairView,
     TokenRefreshView,
 )
@@ -19,4 +19,6 @@ urlpatterns = [
     path('api/', include('lcca.urls')),
     path('api/', include('cppm.urls')),
     path('api/', include('reports.urls')),
+    path('api/', include('dashboard.urls')),
+    
 ]
